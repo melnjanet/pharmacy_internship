@@ -30,12 +30,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it 'has many recipe' do
-      expect(user).to respond_to :recipes
-    end
-
-    it 'has many orders' do
-      expect(user).to respond_to :orders
-    end
+    it { should have_many(:orders) }
+    it { should have_many(:recipes) }
   end
 end

@@ -30,16 +30,10 @@ RSpec.describe Recipe, type: :model do
       end
     end
 
-    it 'is expected to belong to user' do
-      expect(belong_to :user)
-    end
+    it { should define_enum_for(:age) }
 
-    it 'is expected to belong to doctor' do
-      expect(belong_to :doctor)
-    end
-
-    it 'is expected to belong to supply' do
-      expect(belong_to :supply)
-    end
+    it { should belong_to(:user) }
+    it { should belong_to(:doctor) }
+    it { should belong_to(:supply) }
   end
 end

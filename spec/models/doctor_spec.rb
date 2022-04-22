@@ -26,12 +26,7 @@ RSpec.describe Doctor, type: :model do
       end
     end
 
-    it 'has one account' do
-      expect(doctor).to respond_to :account
-    end
-
-    it 'has many recipes' do
-      expect(doctor).to respond_to :recipes
-    end
+    it { should have_one(:account) }
+    it { should have_many(:recipes) }
   end
 end

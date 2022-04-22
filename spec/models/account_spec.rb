@@ -4,9 +4,7 @@ RSpec.describe Account, type: :model do
   describe 'Creation' do
     let(:account) { FactoryBot.create :account }
 
-    it 'is expected to belong to doctor' do
-      expect(belong_to :doctor)
-    end
+    it { should belong_to(:doctor) }
 
     it 'is invalid without an account number' do
       expect(FactoryBot.build :account, number: nil).not_to be_valid

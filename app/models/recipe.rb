@@ -1,10 +1,6 @@
 class Recipe < ApplicationRecord
-  validates :number, presence: true, uniqueness: true
-  validates :quantity, presence: true
-  validates :age, presence: true
-  validates :expiry, presence: true
-  validates :quantity, presence: true
-
+  validates :number, :quantity, :age, :expiry,  presence: true
+  validates :number, uniqueness: true
 
   belongs_to :doctor
   belongs_to :user

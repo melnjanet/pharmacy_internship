@@ -1,8 +1,5 @@
 class Supply < ApplicationRecord
-  validates :quantity, presence: true
-  validates :measure, presence: true
-  validates :price, presence: true
-  validates :amount, presence: true
+  validates :quantity, :measure, :price, :amount, presence: true
 
   has_many  :nomenclatures
   has_many :recipes

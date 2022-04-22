@@ -14,12 +14,7 @@ RSpec.describe Order, type: :model do
       end
     end
 
-    it 'has one recipe' do
-      expect(order).to respond_to :recipe
-    end
-
-    it 'is expected to belong to user' do
-      expect(belong_to :user)
-    end
+    it { should belong_to(:user) }
+    it { should have_one(:recipe) }
   end
 end

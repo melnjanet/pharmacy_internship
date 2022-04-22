@@ -26,8 +26,6 @@ RSpec.describe Supply, type: :model do
       end
     end
 
-    it 'is expected to belong to pharmacist' do
-      expect(belong_to :pharmacist)
-    end
+    it { should belong_to(:pharmacist) }
   end
 end
