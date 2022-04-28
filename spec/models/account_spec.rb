@@ -1,23 +1,39 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id         :bigint           not null, primary key
+#  amount     :float
+#  expiry     :date
+#  number     :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  admin_id   :bigint
+#
+# Indexes
+#
+#  index_accounts_on_admin_id  (admin_id)
+#
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  describe 'Creation' do
-    let(:account) { FactoryBot.create :account }
+  let(:account) { FactoryBot.create :account }
 
-    it { should belong_to(:doctor) }
-
-    it 'is invalid without an account number' do
-      expect(FactoryBot.build :account, number: nil).not_to be_valid
+  describe 'creation' do
+    context 'with number' do
+      it { expect(account).to validate_presence_of(:number) }
+      it { expect(account).to validate_uniqueness_of(:number) }
     end
+  end
 
-    it 'does not allow duplicate account number' do
-      expect(FactoryBot.build :account, number: account.number).not_to be_valid
-    end
+  describe 'with created' do
+    context 'when account is created'
+    it { expect(account).to be_valid }
+  end
 
-    context 'when account is created' do
-      it 'should be valid' do
-        expect(account).to be_valid
-      end
+  describe 'associations' do
+    context 'when belong to admin' do
+      it { should belong_to(:admin) }
     end
   end
 end

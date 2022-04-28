@@ -1,36 +1,52 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint           not null, primary key
+#  active     :boolean          default(TRUE)
+#  age        :integer
+#  email      :string
+#  first_name :string
+#  last_name  :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Creation' do
-    let(:user) { FactoryBot.create :user }
+  let(:user) { FactoryBot.create :user }
 
-    it 'is invalid without a first_name' do
-      expect(FactoryBot.build :user, first_name: nil).not_to be_valid
+  describe 'creation' do
+    context 'with first_name' do
+      it { expect(user).to validate_presence_of(:first_name) }
     end
 
-    it 'is invalid without a last_name' do
-      expect(FactoryBot.build :user, last_name: nil).not_to be_valid
+    context 'with last_name' do
+      it { expect(user).to validate_presence_of(:last_name) }
     end
 
-    it 'is invalid without an email' do
-      expect(FactoryBot.build :user, email: nil).not_to be_valid
+    context 'with email' do
+      it { expect(user).to validate_presence_of(:email) }
+      it { expect(user).to validate_uniqueness_of(:email) }
     end
 
-    it 'does not allow duplicate emails' do
-      expect(FactoryBot.build :user, email: user.email).not_to be_valid
+    context 'with age' do
+      it { expect(user).to validate_presence_of(:age) }
+    end
+  end
+
+  describe 'associations' do
+    context 'when belong to orders' do
+      it { should have_many(:orders) }
     end
 
-    it 'is invalid without an age' do
-      expect(FactoryBot.build :user, age: nil).not_to be_valid
+    context 'when belong to recipes' do
+      it { should have_many(:recipes) }
     end
+  end
 
-    context 'when user is created' do
-      it 'should be valid' do
-        expect(user).to be_valid
-      end
-    end
-
-    it { should have_many(:orders) }
-    it { should have_many(:recipes) }
+  context 'is created' do
+    context 'when user is created'
+    it { expect(user).to be_valid }
   end
 end
