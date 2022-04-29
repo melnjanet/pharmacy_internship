@@ -14,7 +14,9 @@
 #
 class Admin < ApplicationRecord
   validates :first_name, :last_name, :email, :age, presence: true
+  validates :first_name, :last_name, length: { minimum: 2 }
   validates :email, uniqueness: true
+  validates :age, numericality: { in: 18..65 }
 
   scope :active_users, -> { where(active: true) }
   scope :inactive_users, -> { where(active: false) }
@@ -22,5 +24,5 @@ class Admin < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :items, dependent: :destroy
 
-  enum role: { super_admin: 0, pharmacist: 1, physician: 2 }
+  enum role: { super_user: 0, pharmacist: 1, physician: 2 }
 end

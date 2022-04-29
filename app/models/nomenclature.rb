@@ -27,8 +27,7 @@
 #  index_nomenclatures_on_manufacture_id   (manufacture_id)
 #
 class Nomenclature < ApplicationRecord
-  validates :brand_name, :dosage_form, :package_size, :package_units, :prescription,
-            :age_group, presence: true
+  validates :brand_name, :dosage_form, :package_size, :package_units, :age_group, presence: true
   validates :brand_name, uniqueness: true
   validates_length_of :brand_name, minimum: 3
 
@@ -38,7 +37,7 @@ class Nomenclature < ApplicationRecord
   belongs_to :generic_name
 
   enum age_group: { child: 0, adult: 1 }
-  enum dosage_form: { tablet: 0, capsules: 1 }
-  enum package_units: { tbl: 0, ml: 1 }
+  enum dosage_form: { tablet: 0, capsules: 1, cream: 2 }
+  enum package_units: { tbl: 0, ml: 1, g: 2 }
   enum strength_units: { mg: 0, mg_ml: 1 }
 end

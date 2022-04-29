@@ -65,6 +65,9 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    apipie-rails (0.7.2)
+      actionpack (>= 5.0)
+      activesupport (>= 5.0)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -239,6 +242,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 3.2)
+  apipie-rails (~> 0.7.2)
   bootsnap (>= 1.4.4)
   byebug
   capybara

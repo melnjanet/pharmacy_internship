@@ -7,7 +7,7 @@ RSpec.describe "users/show", type: :view do
       last_name: "Last Name",
       email: "Email",
       age: 2,
-      acitve: false
+      active: false
     ))
   end
 
