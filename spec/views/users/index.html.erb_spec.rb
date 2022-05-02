@@ -8,14 +8,14 @@ RSpec.describe "users/index", type: :view do
         last_name: "Last Name",
         email: "Email",
         age: 2,
-        acitve: false
+        active: false
       ),
       User.create!(
         first_name: "First Name",
         last_name: "Last Name",
         email: "Email",
         age: 2,
-        acitve: false
+        active: false
       )
     ])
   end

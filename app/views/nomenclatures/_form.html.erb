@@ -1,0 +1,17 @@
+<%= form_with(model: nomenclature) do |form| %>
+  <% if nomenclature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nomenclature.errors.count, "error") %> prohibited this nomenclature from being saved:</h2>
+
+      <ul>
+        <% nomenclature.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -7,7 +7,7 @@ RSpec.describe "users/edit", type: :view do
       last_name: "MyString",
       email: "MyString",
       age: 1,
-      acitve: false
+      active: false
     ))
   end
 
@@ -24,7 +24,7 @@ RSpec.describe "users/edit", type: :view do
 
       assert_select "input[name=?]", "user[age]"
 
-      assert_select "input[name=?]", "user[acitve]"
+      assert_select "input[name=?]", "user[active]"
     end
   end
 end

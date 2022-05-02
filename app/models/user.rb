@@ -13,7 +13,9 @@
 #
 class User < ApplicationRecord
   validates :first_name, :last_name, :email, :age, presence: true
+  validates :first_name, :last_name, length: { minimum: 2 }
   validates :email, uniqueness: true
+  validates :age, numericality: { in: 18..65 }
 
   scope :active_users, -> { where(active: true) }
   scope :inactive_users, -> { where(active: false) }
@@ -21,4 +23,8 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_one :cart
+
+  def full_name
+    first_name + last_name
+  end
 end

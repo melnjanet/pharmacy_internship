@@ -1,0 +1,2 @@
+module GenericNamesHelper
+end

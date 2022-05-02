@@ -27,7 +27,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Recipe < ApplicationRecord
-  validates :number, :quantity, :age_group, :expiry, :used, presence: true
+  validates :number, :quantity, :age_group, :expiry, presence: true
   validates :number, uniqueness: true
   validates_numericality_of :quantity, greater_than: 0
 
