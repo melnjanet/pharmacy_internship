@@ -1,0 +1,14 @@
+<style>
+
+</style>
+
+
+<nav class="container d-flex flex-column flex-md-row justify-content-between">
+  <%= link_to root_path, class: "logo" do %>
+    <%= image_tag "logo.png", width: 50, alt: t("application_name") %>
+  <% end %>
+  <%= link_to 'Admin', admin_path(role: :admin), class: "py-2 d-md-inline-bloc text-white" %>
+  <%= link_to 'Pharmacist', admin_path(role: :pharmacist), class: "py-2 d-md-inline-bloc text-white" %>
+  <%= link_to 'Physician', admin_path(role: :physician), class: "py-2 d-md-inline-bloc text-white" %>
+  <%= link_to 'User', users_path, class: "py-2 d-md-inline-bloc text-white" %>
+</nav>

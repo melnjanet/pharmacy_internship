@@ -1,22 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe "users/show", type: :view do
-  before(:each) do
-    @user = assign(:user, User.create!(
-      first_name: "First Name",
-      last_name: "Last Name",
-      email: "Email",
-      age: 2,
-      active: false
-    ))
+  let(:valid_user) { FactoryBot.create(:user, first_name: "John", last_name: "Dow", email: "test@test.com") }
+
+  it "Show info about user" do
+    assign(:user, valid_user)
+
+    render
+
+    expect(rendered).to match valid_user.first_name
+    expect(rendered).to match valid_user.last_name
+    expect(rendered).to match valid_user.email
   end
 
-  it "renders attributes in <p>" do
+  it "Show link to main list" do
+    assign(:user, valid_user)
+
     render
-    expect(rendered).to match(/First Name/)
-    expect(rendered).to match(/Last Name/)
-    expect(rendered).to match(/Email/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to match(/false/)
+
+    expect(rendered).to match "Back"
   end
+
 end

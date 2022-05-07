@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @atc_code.code %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @atc_code.title %>
+</p>
+
+<%= link_to 'Edit', edit_admins_atc_code_path(@atc_code) %> |
+<%= link_to 'Back', admins_atc_codes_path %>

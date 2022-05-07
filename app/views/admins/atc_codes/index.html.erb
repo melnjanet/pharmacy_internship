@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>ATC Code</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atc_codes.each do |atc_code| %>
+      <tr>
+        <td><%= atc_code.code %></td>
+        <td><%= atc_code.title %></td>
+        <td><%= link_to 'Show', [:admins, atc_code] %></td>
+        <td><%= link_to 'Edit', edit_admins_atc_code_path(atc_code) %></td>
+        <td><%= link_to 'Destroy', [:admins, atc_code], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New ATC Code', new_admins_atc_code_path %>

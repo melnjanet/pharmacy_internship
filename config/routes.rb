@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
   apipie
   root "home#index"
+  get "admin", to: "admins/dashboard#index"
 
-  resources :accounts
-  resources :admins
-  resources :atc_codes
+  namespace :admins do
+    root "dashboard#index"
+    get :dashboard, to: "dashboard#index"
+
+    resources :admins
+    resources :accounts
+    resources :atc_codes
+    resources :countries
+    resources :generic_names
+    resources :manufactures
+    resources :nomenclatures
+    resources :items
+    resources :recipes
+  end
+
   resources :carts
-  resources :countries
-  resources :generic_names
-  resources :items
-  resources :manufactures
-  resources :nomenclatures
   resources :orders
-  resources :recipes
   resources :users
 end
