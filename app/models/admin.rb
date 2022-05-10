@@ -24,5 +24,9 @@ class Admin < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :items, dependent: :destroy
 
-  enum role: { super_user: 0, pharmacist: 1, physician: 2 }
+  enum role: { admin: 0, pharmacist: 1, physician: 2 }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
